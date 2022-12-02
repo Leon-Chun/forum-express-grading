@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs')
 const db = require('../models')
 const { User, Comment, Restaurant } = db
+
 const { getUser } = require('../helpers/auth-helpers')
 const { imgurFileHandler } = require('../helpers/file-helpers')
 
@@ -54,7 +55,6 @@ const userController = {
     ])
       .then(([profile, comments]) => {
         if (!profile) throw new Error("User doesn't exist.")
-
         res.render('users/profile', {
           user: getUser(req),
           profile,
